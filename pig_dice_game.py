@@ -1,6 +1,8 @@
-text = """
-Hello everyone, This game is better
-"""
+
+# “Pig” is an easy and fun dice game that anyone in the family can play.
+# You only need one die in hand and know basic arithmetic to play the game.
+# It’s an entertaining way for kids to practice adding and learn about probability.
+
 import random
 
 def roll():
@@ -9,6 +11,8 @@ def roll():
     roll = random.randint(min_value, max_value)
 
     return roll
+
+
 while True:
     players = input("Enter the number of players (2 - 4): ")
     if players.isdigit():
@@ -20,12 +24,16 @@ while True:
     else:
         print("Invalid, try again.")
 
+
 max_score = 50
 player_scores = [0 for _ in range(players)]
 
-while max(max_score) < max_score:
+
+while max(player_scores) < max_score:
 
     for player_idx in range(players):
+        print("\nPlayer number", player_idx + 1, "turn has jast started!\n")
+        print("Your total score is:", player_scores[player_idx], "\n")
         current_score = 0
 
         while True:
@@ -37,6 +45,7 @@ while max(max_score) < max_score:
             value = roll()
             if value == 1:
                 print("You rolled a 1! Turn done!")
+                current_score = 0   
                 break
             else:
                 current_score += value
@@ -46,3 +55,8 @@ while max(max_score) < max_score:
 
         player_scores[player_idx] += current_score
         print("Your total score is:", player_scores[player_idx])
+
+max_score = max(player_scores)
+winning_idx = player_scores.index(max_score)
+
+print("Player number", winning_idx + 1, "is the Winner with a score of:", max_score)
