@@ -14,7 +14,7 @@ choisen_word = random.choice(words)
 
 word_display = ['_' for _ in choisen_word]
 
-attempts = 8 # Максимальное количество ошибок при ушадывании слова
+attempts = 8 # Максимальное количество ошибок при угадывании слова
 
 while attempts > 0 and '_' in word_display:
     print("\n" + ' '.join(word_display))
@@ -28,6 +28,7 @@ while attempts > 0 and '_' in word_display:
     else:
         print("Такой буквы не существует в данном слове.")
         attempts -= 1
+        print(f"Осталось {attempts} жизней")
 
 # Заключение в игре
 if '_' not in word_display:
